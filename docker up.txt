@@ -1,0 +1,7 @@
+Executar docker:
+docker compose up --build
+docker compose up
+docker compose down
+
+FastAPI no endereço: http://localhost:8000
+http://localhost:8000/docs → interface automática do Swagger

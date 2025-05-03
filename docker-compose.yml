@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DB_HOST=db
+      - DB_NAME=cabos
+      - DB_USER=postgres
+      - DB_PASS=1234
+      - DB_PORT=5432
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_DB: cabos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
